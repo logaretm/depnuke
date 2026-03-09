@@ -8,7 +8,7 @@ use std::process::{Command, Stdio};
 use std::thread;
 
 #[derive(Parser)]
-#[command(name = "nuke-pkg", about = "Nuke node_modules, lock files, and package manager caches")]
+#[command(name = "depnuke", about = "Nuke node_modules, lock files, and package manager caches")]
 struct Cli {
     /// Package names to nuke from cache (reads their deps too)
     packages: Vec<String>,

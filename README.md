@@ -1,4 +1,4 @@
-# nuke-pkg
+# depnuke
 
 A fast CLI tool for nuking `node_modules`, lock files, and package manager caches during local npm package development.
 
@@ -11,7 +11,7 @@ rm -rf node_modules pnpm-lock.yaml && pnpm cache delete @sentry-internal/browser
 Now you can just type:
 
 ```sh
-nuke-pkg @sentry/vue
+depnuke @sentry/vue
 ```
 
 It detects your package manager, recursively walks the dependency tree, removes `node_modules` and lock files, and clears every dependency from the cache.
@@ -19,14 +19,14 @@ It detects your package manager, recursively walks the dependency tree, removes 
 ## Install
 
 ```sh
-cargo install nuke-pkg
+cargo install depnuke
 ```
 
 Or build from source:
 
 ```sh
-git clone https://github.com/AhmedAbdulrahman/nuke-pkg.git
-cd nuke-pkg
+git clone https://github.com/logaretm/depnuke.git
+cd depnuke
 cargo install --path .
 ```
 
@@ -34,29 +34,29 @@ cargo install --path .
 
 ```sh
 # Nuke everything: remove node_modules, lock file, and clear cache for a package + all its deps
-nuke-pkg @sentry/vue
+depnuke @sentry/vue
 
 # Multiple packages
-nuke-pkg @sentry/vue @sentry/browser
+depnuke @sentry/vue @sentry/browser
 
 # Only clear caches, keep node_modules and lock file
-nuke-pkg --cache-only @sentry/vue
+depnuke --cache-only @sentry/vue
 
 # Limit dependency depth (0 = package itself only, 1 = direct deps, etc.)
-nuke-pkg -d 0 @sentry/vue     # just the package
-nuke-pkg -d 1 @sentry/vue     # package + its direct deps
+depnuke -d 0 @sentry/vue     # just the package
+depnuke -d 1 @sentry/vue     # package + its direct deps
 
 # Include devDependencies
-nuke-pkg --dev @sentry/vue
+depnuke --dev @sentry/vue
 
 # Include optionalDependencies
-nuke-pkg --optional @sentry/vue
+depnuke --optional @sentry/vue
 
 # Include everything (dev + optional + peer)
-nuke-pkg --all @sentry/vue
+depnuke --all @sentry/vue
 
 # Just clean node_modules and lock file, no cache clearing
-nuke-pkg
+depnuke
 ```
 
 ## How it works
@@ -85,7 +85,7 @@ Handles all common `node_modules` structures:
 
 ### Scoped package detection
 
-When you pass a scoped package like `@sentry/vue`, nuke-pkg also finds all other packages under the same scope (`@sentry/*`) from your root `package.json` and includes them automatically.
+When you pass a scoped package like `@sentry/vue`, depnuke also finds all other packages under the same scope (`@sentry/*`) from your root `package.json` and includes them automatically.
 
 ## Options
 

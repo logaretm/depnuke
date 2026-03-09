@@ -2,7 +2,7 @@
 
 ## Project
 
-nuke-pkg — Rust CLI that nukes node_modules, lock files, and package manager caches for local npm package development.
+depnuke — Rust CLI that nukes node_modules, lock files, and package manager caches for local npm package development.
 
 ## Build & Test
 
@@ -17,10 +17,10 @@ cargo fmt -- --check     # check formatting
 No test suite yet. Test manually by running against a project with node_modules:
 
 ```sh
-nuke-pkg @sentry/vue          # full nuke
-nuke-pkg --cache-only @scope/pkg  # cache only
-nuke-pkg -d 0 pkg             # no dep traversal
-nuke-pkg                      # just clean node_modules + lock file
+depnuke @sentry/vue          # full nuke
+depnuke --cache-only @scope/pkg  # cache only
+depnuke -d 0 pkg             # no dep traversal
+depnuke                      # just clean node_modules + lock file
 ```
 
 ## Architecture
