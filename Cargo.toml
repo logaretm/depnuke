@@ -2,6 +2,13 @@
 name = "nuke-pkg"
 version = "0.1.0"
 edition = "2024"
+description = "Nuke node_modules, lock files, and package manager caches for local npm package development"
+license = "MIT"
+repository = "https://github.com/AhmedAbdulrahman/nuke-pkg"
+homepage = "https://github.com/AhmedAbdulrahman/nuke-pkg"
+readme = "README.md"
+keywords = ["npm", "pnpm", "yarn", "cache", "node-modules"]
+categories = ["command-line-utilities", "development-tools"]
 
 [dependencies]
 clap = { version = "4", features = ["derive"] }
